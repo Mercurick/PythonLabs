@@ -40,6 +40,7 @@ try:
             for num in numbers:
                 repeating_digits = has_repeating_digits(num)
                 if repeating_digits:
+                    print(num)
                     print(' '.join(number_to_words(d) for d in repeating_digits))
 
             block = file.read(block_size)
