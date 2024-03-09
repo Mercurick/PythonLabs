@@ -35,7 +35,7 @@ try:
         block = file.read(block_size)
 
         while block:
-            numbers = [int(num) for num in block.split() if num.isdigit()]
+            numbers = [int(num) for num in block.split() if num.lstrip('-').isdigit()]
 
             for num in numbers:
                 repeating_digits = has_repeating_digits(num)
