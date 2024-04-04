@@ -79,6 +79,11 @@ def plot_execution_time(n_values):
         iterative_times.append(iterative_time)
         efficient_times.append(efficient_time)
 
+    print(f"{'n':<10}{'Рекурсивное время (мс)':<25}{'Итерационное время (мс)':<25}{'Эффективное время (мс)':<25}")
+    for i, n in enumerate(n_values):
+        print(f"{n:<10}{recursive_times[i]:<25}{iterative_times[i]:<25}{efficient_times[i]:<25}")
+
+
     plt.plot(n_values, recursive_times, label="Рекурсивное время")
     plt.plot(n_values, iterative_times, label="Итерационное время")
     plt.plot(n_values, efficient_times, label="Эффективное время")
