@@ -89,3 +89,19 @@ plt.imshow(F, cmap='viridis')
 plt.colorbar()
 plt.title("Матрица F")
 plt.show()
+
+# Гистограмма распределения значений элементов матрицы F
+plt.hist(F.flatten(), bins=20, color='skyblue', edgecolor='black')
+plt.title('Распределение значений элементов матрицы F')
+plt.xlabel('Значение элемента')
+plt.ylabel('Частота')
+plt.grid(True)
+plt.show()
+
+# График зависимости значений элементов одной строки от их индексов
+plt.plot(F[0, :], marker='o', linestyle='-', color='orange')
+plt.title('Зависимость значений элементов первой строки матрицы F от их индексов')
+plt.xlabel('Индекс элемента')
+plt.ylabel('Значение элемента')
+plt.grid(True)
+plt.show()
