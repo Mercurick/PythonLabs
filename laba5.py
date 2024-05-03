@@ -17,8 +17,13 @@ factorial_cache = {0: 1, 1: 1}
 Динамическая функция для вычисления факториала
 """
 def dynamic_factorial(n):
-    if n not in factorial_cache:
-        factorial_cache[n] = n * factorial_cache[n-1] #Ошибка
+    if n in factorial_cache:
+        return factorial_cache[n]
+
+    # Вычисляем факториалы последовательно до n и сохраняем их в кэше
+    for i in range(2, n + 1):
+        factorial_cache[i] = factorial_cache[i - 1] * i
+
     return factorial_cache[n]
 
 """
@@ -42,14 +47,15 @@ def iterative_factorial(n):
 """
 Динамическая функция для вычисления F(n)
 """
-def dynamic_F(n, cache={0: 1, 1: 1}):
+def dynamic_F(n, k=1, cache={0: 1, 1: 1}):
     if n in cache:
         return cache[n]
     else:
         """
         Здесь используем dynamic_factorial для вычисления факториалов
         """
-        result = (-1)**n * (dynamic_F(n-1, cache) / (dynamic_factorial(2*n)) * dynamic_F(n-2, cache) + 1) # ошибка минус (-1) и факториал вычисляется неверно
+        k *= -1
+        result = k * (dynamic_F(n-1, k, cache) / (dynamic_factorial(2*n)) * dynamic_F(n-2, k, cache) + 1)
         #F(0) = 1, F(1) = 1, F(n) = (-1) ^ n * (F(n–1) / (2n)!*F(n - 2) + 1), при n > 1
         cache[n] = result
         return result
