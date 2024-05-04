@@ -47,7 +47,8 @@ def iterative_factorial(n):
 """
 Динамическая функция для вычисления F(n)
 """
-def dynamic_F(n, k=1, cache={0: 1, 1: 1}):
+k=1
+def dynamic_F(n, cache={0: 1, 1: 1}):
     if n in cache:
         return cache[n]
     else:
@@ -55,7 +56,7 @@ def dynamic_F(n, k=1, cache={0: 1, 1: 1}):
         Здесь используем dynamic_factorial для вычисления факториалов
         """
         k *= -1
-        result = k * (dynamic_F(n-1, k, cache) / (dynamic_factorial(2*n)) * dynamic_F(n-2, k, cache) + 1)
+        result = k * (dynamic_F(n-1, cache) / (dynamic_factorial(2*n)) * dynamic_F(n-2, cache) + 1)
         #F(0) = 1, F(1) = 1, F(n) = (-1) ^ n * (F(n–1) / (2n)!*F(n - 2) + 1), при n > 1
         cache[n] = result
         return result
