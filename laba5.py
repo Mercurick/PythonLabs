@@ -11,20 +11,23 @@ import matplotlib.pyplot as plt
 """
 Кэш для хранения вычисленных значений факториалов
 """
-factorial_cache = {0: 1, 1: 1}
+factorial_cache = {'value': 1, 'last_n': 1}
 
 """
-Динамическая функция для вычисления факториала
+Динамическая функция для вычисления факториала КЭШ СДЕЛАТЬ НЕ МАССИВОМ, А ОДНОЙ ПЕРЕМЕННОЙ КОТОРАЯ ЗАПОМИНАЕТ ПОСЛЕДНЕЕ ЗНАЧЕНИЕ.
 """
 def dynamic_factorial(n):
-    if n in factorial_cache:
-        return factorial_cache[n]
+    if n == factorial_cache['last_n']:
+        return factorial_cache['value']
+
+    last_value = factorial_cache['value']
+    last_n = factorial_cache['last_n']
 
     # Вычисляем факториалы последовательно до n и сохраняем их в кэше
-    for i in range(2, n + 1):
-        factorial_cache[i] = factorial_cache[i - 1] * i
+    factorial_cache['value'] = last_value
+    factorial_cache['last_n'] = n
 
-    return factorial_cache[n]
+    return last_value
 
 """
 Рекурсивная функция для вычисления факториала
@@ -47,7 +50,7 @@ def iterative_factorial(n):
 """
 Динамическая функция для вычисления F(n)
 """
-k=1
+k = 1
 def dynamic_F(n, cache={0: 1, 1: 1}):
     if n in cache:
         return cache[n]
@@ -55,6 +58,7 @@ def dynamic_F(n, cache={0: 1, 1: 1}):
         """
         Здесь используем dynamic_factorial для вычисления факториалов
         """
+        global k
         k *= -1
         result = k * (dynamic_F(n-1, cache) / (dynamic_factorial(2*n)) * dynamic_F(n-2, cache) + 1)
         #F(0) = 1, F(1) = 1, F(n) = (-1) ^ n * (F(n–1) / (2n)!*F(n - 2) + 1), при n > 1
