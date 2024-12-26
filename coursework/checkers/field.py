@@ -1,7 +1,7 @@
-from coursework.engine.enums import CheckerType
-from coursework.engine.checker import Checker
-from coursework.engine.constants import WHITE_CHECKERS, BLACK_CHECKERS
-from point import Point
+from checkers.enums import CheckerType
+from checkers.checker import Checker
+from checkers.constants import WHITE_CHECKERS, BLACK_CHECKERS
+from checkers.point import Point
 
 from functools import reduce
 

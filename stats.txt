@@ -1,4 +1,4 @@
 {
-    "best_speed": null,
-    "sessions": 1
+    "best_speed": 50.310628219529875,
+    "sessions": 4
 }

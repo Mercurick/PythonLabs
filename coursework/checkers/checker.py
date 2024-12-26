@@ -1,4 +1,4 @@
-from enums import CheckerType
+from checkers.enums import CheckerType
 
 class Checker:
     def __init__(self, type: CheckerType = CheckerType.NONE):

@@ -1,5 +1,5 @@
-from coursework.engine.point import Point
-from coursework.engine.enums import CheckerType, SideType
+from checkers.point import Point
+from checkers.enums import CheckerType, SideType
 
 # Сторона за которую играет игрок
 PLAYER_SIDE = SideType.WHITE
@@ -19,7 +19,7 @@ MAX_PREDICTION_DEPTH = 3
 BORDER_WIDTH = 2 * 2
 
 # Цвета игровой доски
-FIELD_COLORS = ['#E7CFA9', '#927456']
+FIELD_COLORS = ['#e9cbae', '#8a7560']
 # Цвет рамки при наведении на ячейку мышкой
 HOVER_BORDER_COLOR = '#54b346'
 # Цвет рамки при выделении ячейки
